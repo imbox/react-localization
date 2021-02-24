@@ -12,7 +12,7 @@ declare module 'react-localization' {
          * independently from the interface one
          * @param language 
          */
-        setLanguage(language: string): void;
+        setLanguage(language: string, loadLanguage?: boolean): void;
 
         /**
          *  The current language displayed (could differ from the interface language
@@ -49,15 +49,22 @@ declare module 'react-localization' {
          * Replace the NamedLocalization object without reinstantiating the object
          * @param props 
          */
-        setContent(props: any): void;
+        setContent(props: any, shouldSetLanguage?: boolean): void;
+
+        /**
+         * Return current locale object
+         */
+        getContent(): any
     }
 
     export type LocalizedStrings<T> = LocalizedStringsMethods & T;
 
     type GetInterfaceLanguageCallback = () => string;
+    type loadLanguageCallback = (countryCode: string) => void;
 
     interface Options {
         customLanguageInterface?: GetInterfaceLanguageCallback;
+        loadLanguage?: loadLanguageCallback;
         logsEnabled?: boolean;
         pseudo?: boolean;
         pseudoMultipleLanguages?: boolean;
