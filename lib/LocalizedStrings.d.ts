@@ -64,7 +64,7 @@ declare module 'react-localization' {
         /**
          * Remove language listener
          */
-        removeLanguageChangeListener: (callback: () => void) => void;
+        removeLanguageChangeListener: (callback: (language: string) => void) => void;
     }
 
     export type LocalizedStrings<T> = LocalizedStringsMethods & T;
